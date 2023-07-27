@@ -1,0 +1,35 @@
+<div class="container p-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+            <h1>¡Listas de útiles!</h1>
+        </div>
+        {{#each productos}}<!--foreach para desplegar todos los elementos de la consulta-->
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase">{{nombre}}</h3>
+                    <h5 class="card-subtitle mb-2 text-muted">${{precio}}</h5>
+                    <pre class="card-text">{{descripcion}}</pre>
+                    
+                    <!-- Boton de pago con paypal-->
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top: 20px;">
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" name="business" value="tu_email_de_paypal@gmail.com">
+                        <input type="hidden" name="currency_code" value="USD"> 
+                        <input type="hidden" name="item_name" value="{{nombre}}"> 
+                        <input type="hidden" name="amount" value="{{precio}}"> 
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No hay productos!</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

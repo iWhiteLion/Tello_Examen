@@ -1,0 +1,43 @@
+<style>
+        body {
+            /* Establecer un alto máximo para el cuerpo de la página */
+            max-height: 500px; /* Ajusta este valor según tus necesidades */
+            overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+        }
+
+        /* Estilos para los recuadros que contienen los productos */
+        .producto-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            /* Establecer una altura mínima para asegurar que el contenido sea visible */
+            min-height: 200px; /* Ajusta este valor según tus necesidades */
+        }
+    </style>
+<div class="container p-4">
+    <div class="col-md-12 text-center">
+            <h1>Nuestros productos</h1>
+        </div>
+    <div class="row">
+        {{#each productos}}
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <!-- Mostrar el nombre del producto -->
+                    <h3 class="card-title text-uppercase">{{nombre}}</h3>
+                    <!-- Mostrar el precio del producto -->
+                    <h5 class="card-subtitle mb-2 text-muted">${{precio}}</h5>
+                    <p class="m-2">{{descripcion}}</p>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No hay productos!</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
